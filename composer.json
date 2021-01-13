@@ -1,9 +1,9 @@
 {
-    "name": "axl-media-org/:package_name",
-    "description": ":package_description",
-    "keywords": ["laravel", "php"],
+    "name": "axl-media-org/sportradar-sdk",
+    "description": "PHP-based SDK to work with the Sportradar API & live events.",
+    "keywords": ["laravel", "php", "sportradar", "sdk", "sports"],
     "license": "Apache-2.0",
-    "homepage": "https://github.com/axl-media-org/:package_name",
+    "homepage": "https://github.com/axl-media-org/sportradar-sdk",
     "authors": [
         {
             "name": "AXL Media",
@@ -12,26 +12,24 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0"
+        "php": "^7.3|^8.0"
     },
     "autoload": {
         "psr-4": {
-            "AxlMedia\\:package_namespace\\": "src/"
+            "AxlMedia\\SportradarSdk\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "AxlMedia\\:package_namespace\\Test\\": "tests"
+            "AxlMedia\\SportradarSdk\\Test\\": "tests"
         }
     },
     "scripts": {
         "test": "vendor/bin/phpunit"
     },
     "require-dev": {
-        "laravel/legacy-factories": "^1.1",
         "mockery/mockery": "^1.4",
-        "orchestra/testbench": "^5.0|^6.0",
-        "orchestra/database": "^5.0|^6.0"
+        "orchestra/testbench": "^5.0|^6.0"
     },
     "config": {
         "sort-packages": true
@@ -40,7 +38,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AxlMedia\\:package_namespace\\:package_service_provider"
+                "AxlMedia\\SportradarSdk\\SportradarSdkServiceProvider"
             ]
         }
     }

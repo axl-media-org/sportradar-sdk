@@ -1,36 +1,28 @@
-Package Name Here
-===================================
+Sportradar SDK
+==============
 
-![CI](https://github.com/axl-media-org/:package_name/workflows/CI/badge.svg?branch=master)
-[![codecov](https://codecov.io/gh/axl-media-org/:package_name/branch/master/graph/badge.svg)](https://codecov.io/gh/axl-media-org/:package_name/branch/master)
+![CI](https://github.com/axl-media-org/sportradar-sdk/workflows/CI/badge.svg?branch=master)
+[![codecov](https://codecov.io/gh/axl-media-org/sportradar-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/axl-media-org/sportradar-sdk/branch/master)
 [![StyleCI](https://github.styleci.io/repos/:styleci_code/shield?branch=master)](https://github.styleci.io/repos/:styleci_code)
-[![Latest Stable Version](https://poser.pugx.org/axl-media-org/:package_name/v/stable)](https://packagist.org/packages/axl-media-org/:package_name)
-[![Total Downloads](https://poser.pugx.org/axl-media-org/:package_name/downloads)](https://packagist.org/packages/axl-media-org/:package_name)
-[![Monthly Downloads](https://poser.pugx.org/axl-media-org/:package_name/d/monthly)](https://packagist.org/packages/axl-media-org/:package_name)
-[![License](https://poser.pugx.org/axl-media-org/:package_name/license)](https://packagist.org/packages/axl-media-org/:package_name)
+[![Latest Stable Version](https://poser.pugx.org/axl-media-org/sportradar-sdk/v/stable)](https://packagist.org/packages/axl-media-org/sportradar-sdk)
+[![Total Downloads](https://poser.pugx.org/axl-media-org/sportradar-sdk/downloads)](https://packagist.org/packages/axl-media-org/sportradar-sdk)
+[![Monthly Downloads](https://poser.pugx.org/axl-media-org/sportradar-sdk/d/monthly)](https://packagist.org/packages/axl-media-org/sportradar-sdk)
+[![License](https://poser.pugx.org/axl-media-org/sportradar-sdk/license)](https://packagist.org/packages/axl-media-org/sportradar-sdk)
 
-**Note:** Replace  ```:package_name``` ```:package_description``` ```:package_namespace``` ```:package_service_provider``` ```:styleci_code``` with their correct values in [README.md](README.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE](LICENSE) and [composer.json](composer.json) files, then delete this line.
-
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+Sportradar SDK is a PHP-based SDK to work with the Sportradar API & live events.
 
 ## 🚀 Installation
 
 You can install the package via composer:
 
 ```bash
-composer require axl-media-org/:package_name
+composer require axl-media-org/sportradar-sdk
 ```
 
 Publish the config:
 
 ```bash
-$ php artisan vendor:publish --provider="AxlMedia\:package_namespace\:package_service_provider" --tag="config"
-```
-
-Publish the migrations:
-
-```bash
-$ php artisan vendor:publish --provider="AxlMedia\:package_namespace\:package_service_provider" --tag="migrations"
+$ php artisan vendor:publish --provider="AxlMedia\SportradarSdk\SportradarSdkServiceProvider" --tag="config"
 ```
 
 ## 🙌 Usage
