@@ -3,7 +3,7 @@ Sportradar SDK
 
 ![CI](https://github.com/axl-media-org/sportradar-sdk/workflows/CI/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/axl-media-org/sportradar-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/axl-media-org/sportradar-sdk/branch/master)
-[![StyleCI](https://github.styleci.io/repos/:styleci_code/shield?branch=master)](https://github.styleci.io/repos/:styleci_code)
+[![StyleCI](https://github.styleci.io/repos/329301580/shield?branch=master)](https://github.styleci.io/repos/329301580)
 [![Latest Stable Version](https://poser.pugx.org/axl-media-org/sportradar-sdk/v/stable)](https://packagist.org/packages/axl-media-org/sportradar-sdk)
 [![Total Downloads](https://poser.pugx.org/axl-media-org/sportradar-sdk/downloads)](https://packagist.org/packages/axl-media-org/sportradar-sdk)
 [![Monthly Downloads](https://poser.pugx.org/axl-media-org/sportradar-sdk/d/monthly)](https://packagist.org/packages/axl-media-org/sportradar-sdk)
