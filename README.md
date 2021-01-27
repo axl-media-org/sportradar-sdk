@@ -28,7 +28,18 @@ $ php artisan vendor:publish --provider="AxlMedia\SportradarSdk\SportradarSdkSer
 ## 🙌 Usage
 
 ```php
-$ //
+use AxlMedia\SportradarSdk\Facades\Facade as Sportradar;
+
+$summaries = Sportradar::sport('soccer')
+    ->sportEvents()
+    ->from('summaries')
+    ->getLiveSummaries();
+
+foreach ($summaries as $match) {
+    foreach ($match['sport_event']['competitors'] as $team) {
+        //
+    }
+}
 ```
 
 ## 🐛 Testing

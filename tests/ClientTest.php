@@ -33,9 +33,10 @@ class ClientTest extends TestCase
         $json = Sportradar::sport('soccer')
             ->sportEvents()
             ->handler($handlerStack)
+            ->from('summaries')
             ->call('GET', '/some-endpoint');
 
-        $this->assertSame($response, $json);
+        $this->assertSame($response['summaries'], $json);
 
         /**
          * The response is 2xx right from the start, so only one

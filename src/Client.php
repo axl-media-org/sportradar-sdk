@@ -4,6 +4,7 @@ namespace AxlMedia\SportradarSdk;
 
 use Exception;
 use GuzzleHttp\Exception\ClientException;
+use Illuminate\Support\Arr;
 
 abstract class Client
 {
@@ -81,6 +82,14 @@ abstract class Client
      * @var mixed
      */
     protected $handler;
+
+    /**
+     * Access the key directly from the response,
+     * instead of passing the whole response.
+     *
+     * @var string
+     */
+    protected $from;
 
     /**
      * Set up a pool of keys, on demand.
@@ -215,6 +224,20 @@ abstract class Client
     }
 
     /**
+     * Specify the key which should be retrieved
+     * upon response.
+     *
+     * @param  string  $from
+     * @return $this
+     */
+    public function from(string $from)
+    {
+        $this->from = $from;
+
+        return $this;
+    }
+
+    /**
      * Make an API call.
      *
      * @param  string  $method
@@ -247,7 +270,9 @@ abstract class Client
                 return;
             }
 
-            return $json;
+            return $this->from
+                ? Arr::get($json, $this->from)
+                : $json;
         }, null);
 
         return $response;

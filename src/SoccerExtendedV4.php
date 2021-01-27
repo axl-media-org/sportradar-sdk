@@ -17,6 +17,46 @@ class SoccerExtendedV4 extends Client
     }
 
     /**
+     * Create a new Competition instance.
+     *
+     * @return \AxlMedia\SportradarSdk\Soccer\ExtendedV4\Competition
+     */
+    public function competitions()
+    {
+        return new Soccer\ExtendedV4\Competition;
+    }
+
+    /**
+     * Create a new Competitor instance.
+     *
+     * @return \AxlMedia\SportradarSdk\Soccer\ExtendedV4\Competitor
+     */
+    public function competitors()
+    {
+        return new Soccer\ExtendedV4\Competitor;
+    }
+
+    /**
+     * Create a new Player instance.
+     *
+     * @return \AxlMedia\SportradarSdk\Soccer\ExtendedV4\Player
+     */
+    public static function players()
+    {
+        return new Soccer\ExtendedV4\Player;
+    }
+
+    /**
+     * Create a new Season instance.
+     *
+     * @return \AxlMedia\SportradarSdk\Soccer\ExtendedV4\Season
+     */
+    public function seasons()
+    {
+        return new Soccer\ExtendedV4\Season;
+    }
+
+    /**
      * Create a new SportEvent instance.
      *
      * @return \AxlMedia\SportradarSdk\Soccer\ExtendedV4\SportEvent
