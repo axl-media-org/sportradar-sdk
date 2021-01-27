@@ -20,6 +20,9 @@ class SportradarSdkServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../config/sportradar.php', 'sportradar'
         );
+
+        $this->configureClients();
+        $this->bindFacade();
     }
 
     /**
@@ -30,5 +33,35 @@ class SportradarSdkServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    /**
+     * Configure the static clients with config details.
+     *
+     * @return void
+     */
+    protected function configureClients(): void
+    {
+        foreach (config('sportradar.sports') as $sport => $details) {
+            if (! $details['enabled']) {
+                continue;
+            }
+
+            $client = $details['client'];
+
+            $client::keys($details['keys']);
+        }
+    }
+
+    /**
+     * Bind the Laravel facade to the Sportradar class.
+     *
+     * @return void
+     */
+    protected function bindFacade(): void
+    {
+        $this->app->bind('sportradar', function () {
+            return new Sportradar;
+        });
     }
 }

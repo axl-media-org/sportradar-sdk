@@ -20,7 +20,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            //
+            \AxlMedia\SportradarSdk\SportradarSdkServiceProvider::class,
         ];
     }
 
