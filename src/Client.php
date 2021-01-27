@@ -16,7 +16,7 @@ abstract class Client
 
     /**
      * The response type.
-     * Currently available: xml, json
+     * Currently available: xml, json.
      *
      * @var string
      */
@@ -24,7 +24,7 @@ abstract class Client
 
     /**
      * The numbers format for odds.
-     * Available: eu, uk, us
+     * Available: eu, uk, us.
      *
      * @var string
      */
@@ -32,7 +32,7 @@ abstract class Client
 
     /**
      * The API domain.
-     * Available: us, com
+     * Available: us, com.
      *
      * @var string
      */
@@ -40,7 +40,7 @@ abstract class Client
 
     /**
      * The league group.
-     * Available: eu, am, as, ntl, other, global
+     * Available: eu, am, as, ntl, other, global.
      *
      * @var string
      */
@@ -95,7 +95,7 @@ abstract class Client
 
     /**
      * Change the response type.
-     * Possible values: json, xml
+     * Possible values: json, xml.
      *
      * @param  string  $responseType
      * @return $this
@@ -109,7 +109,7 @@ abstract class Client
 
     /**
      * Change the domain on which requests will be on.
-     * Possible values: com, us
+     * Possible values: com, us.
      *
      * @param  string  $domain
      * @return $this
@@ -123,7 +123,7 @@ abstract class Client
 
     /**
      * Change the league group.
-     * Possible values: eu, am, as, ntl, other, global
+     * Possible values: eu, am, as, ntl, other, global.
      *
      * @param  string  $leagueGroup
      * @return $this
@@ -150,7 +150,7 @@ abstract class Client
 
     /**
      * Change the package for odds.
-     * Possible values: us, row
+     * Possible values: us, row.
      *
      * @param  string  $package
      * @return $this
@@ -176,7 +176,7 @@ abstract class Client
 
     /**
      * Change the odds format.
-     * Possible values: eu, uk, us
+     * Possible values: eu, uk, us.
      *
      * @param  string  $oddsFormat
      * @return $this
@@ -243,7 +243,7 @@ abstract class Client
                     $client->request($method, $url)->getBody()->__toString(),
                     true
                 );
-            } catch (ClientException|Exception $e) {
+            } catch (ClientException | Exception $e) {
                 return;
             }
 
