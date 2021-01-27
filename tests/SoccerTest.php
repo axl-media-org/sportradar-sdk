@@ -2,7 +2,7 @@
 
 namespace AxlMedia\SportradarSdk\Test;
 
-use AxlMedia\SportradarSdk\Sportradar;
+use AxlMedia\SportradarSdk\Facade as Sportradar;
 
 class SoccerTest extends TestCase
 {
