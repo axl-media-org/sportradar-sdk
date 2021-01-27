@@ -17,12 +17,12 @@ class SoccerExtendedV4 extends Client
     }
 
     /**
-     * Create a new Match instance.
+     * Create a new SportEvent instance.
      *
-     * @return \AxlMedia\SportradarSdk\Soccer\Match
+     * @return \AxlMedia\SportradarSdk\Soccer\ExtendedV4\SportEvent
      */
     public static function sportEvents()
     {
-        return new Soccer\ExtendedV4\Match;
+        return new Soccer\ExtendedV4\SportEvent;
     }
 }

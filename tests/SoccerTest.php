@@ -6,7 +6,7 @@ use AxlMedia\SportradarSdk\Facade as Sportradar;
 
 class SoccerTest extends TestCase
 {
-    public function test_soccer_matches_summary()
+    public function test_soccer_sport_events_summary()
     {
         [
             $production,

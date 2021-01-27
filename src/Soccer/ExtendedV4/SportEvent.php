@@ -4,7 +4,7 @@ namespace AxlMedia\SportradarSdk\Soccer\ExtendedV4;
 
 use AxlMedia\SportradarSdk\SoccerExtendedV4;
 
-class Match extends SoccerExtendedV4
+class SportEvent extends SoccerExtendedV4
 {
     /**
      * Get match summary.
