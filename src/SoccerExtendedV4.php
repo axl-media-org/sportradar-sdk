@@ -21,7 +21,7 @@ class SoccerExtendedV4 extends Client
      *
      * @return \AxlMedia\SportradarSdk\Soccer\Match
      */
-    public static function match()
+    public static function sportEvents()
     {
         return new Soccer\ExtendedV4\Match;
     }

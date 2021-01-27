@@ -31,7 +31,7 @@ class ClientTest extends TestCase
         $handlerStack->push(Middleware::history($history));
 
         $json = Sportradar::sport('soccer')
-            ->match()
+            ->sportEvents()
             ->handler($handlerStack)
             ->call('GET', '/some-endpoint');
 
@@ -66,7 +66,7 @@ class ClientTest extends TestCase
         $handlerStack->push(Middleware::history($history));
 
         $json = Sportradar::sport('soccer')
-            ->match()
+            ->sportEvents()
             ->handler($handlerStack)
             ->call('GET', '/some-endpoint');
 
@@ -97,7 +97,7 @@ class ClientTest extends TestCase
         $handlerStack->push(Middleware::history($history));
 
         $json = Sportradar::sport('soccer')
-            ->match()
+            ->sportEvents()
             ->handler($handlerStack)
             ->call('GET', '/some-endpoint');
 
