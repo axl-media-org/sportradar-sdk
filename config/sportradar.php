@@ -15,17 +15,17 @@ return [
                 'trial' => env('SPORTRADAR_SOCCER_TRIAL_KEY', 'some-trial-key'),
             ],
 
-            'stream' => [
+            /* 'stream' => [
                 'enabled' => true,
                 'key' => env('SPORTRADAR_SOCCER_STREAM_API_KEY', 'some-stream-key'),
                 'access_level' => 'p',
-            ],
+            ], */
 
         ],
 
     ],
 
-    'odds' => [
+    /* 'odds' => [
 
         'enabled' => true,
 
@@ -36,6 +36,6 @@ return [
             't' => env('SPORTRADAR_ODDS_TRIAL_KEY'),
         ],
 
-    ],
+    ], */
 
 ];
