@@ -2,8 +2,6 @@
 
 namespace AxlMedia\SportradarSdk;
 
-use AxlMedia\SportradarSdk\Paginator;
-
 class PaginatedResult
 {
     /**

@@ -3,9 +3,6 @@
 namespace AxlMedia\SportradarSdk\Test;
 
 use AxlMedia\SportradarSdk\Facade as Sportradar;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
 
 class ClientTest extends TestCase
