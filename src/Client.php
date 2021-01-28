@@ -92,6 +92,20 @@ abstract class Client
     protected $from;
 
     /**
+     * The offset for results.
+     *
+     * @var int
+     */
+    protected $offset = 0;
+
+    /**
+     * The limit of results.
+     *
+     * @var int
+     */
+    protected $limit = 500;
+
+    /**
      * Set up a pool of keys, on demand.
      *
      * @param  array  $keys
@@ -238,6 +252,44 @@ abstract class Client
     }
 
     /**
+     * Apply offset to the request.
+     *
+     * @param  int  $offset
+     * @return $this
+     */
+    public function offset(int $offset)
+    {
+        $this->offset = $offset;
+
+        return $this;
+    }
+
+    /**
+     * Apply result limiting to the request.
+     *
+     * @param  int  $limit
+     * @return $this
+     */
+    public function limit(int $limit)
+    {
+        $this->limit = $limit;
+
+        return $this;
+    }
+
+    /**
+     * Specify the client to go further with the
+     * offset by a specific amount or by current limit.
+     *
+     * @param  int|null  $amount
+     * @return $this
+     */
+    public function next(int $amount = null)
+    {
+        return $this->offset($this->offset + ($amount ?: $this->limit));
+    }
+
+    /**
      * Make an API call.
      *
      * @param  string  $method
@@ -256,24 +308,30 @@ abstract class Client
             'handler' => $this->handler,
         ]);
 
-        $response = collect($callableUrls)->reduce(function ($response, $url) use ($client, $method) {
+        $response = collect($callableUrls)->reduce(function ($response, $url) use ($client, $method, $endpoint) {
             if ($response) {
                 return $response;
             }
 
             try {
+                $response = $client->request($method, $url);
+
                 $json = json_decode(
-                    $client->request($method, $url)->getBody()->__toString(),
+                    $response->getBody()->__toString(),
                     true
                 );
             } catch (ClientException | Exception $e) {
-                return;
+                return [];
+            }
+
+            if ($paginator = $this->paginator($response, $json, $url, $method, $endpoint)) {
+                return $paginator;
             }
 
             return $this->from
                 ? Arr::get($json, $this->from)
                 : $json;
-        }, null);
+        }, []);
 
         return $response;
     }
@@ -311,7 +369,7 @@ abstract class Client
                 $placeholderUrl
             );
 
-            $urls[] = "{$this->getApiBaseUrl()}{$url}?api_key={$keyDetails['key']}";
+            $urls[] = "{$this->getApiBaseUrl()}{$url}?api_key={$keyDetails['key']}&offset={$this->offset}&limit={$this->limit}";
 
             return $urls;
         }, []);
@@ -345,5 +403,54 @@ abstract class Client
         $domain = $this->domain;
 
         return "https://api.sportradar.{$domain}";
+    }
+
+    /**
+     * Get the headers from the Guzzle response.
+     *
+     * @param  mixed  $response
+     * @return array
+     */
+    protected function getHeaders($response): array
+    {
+        return collect($response->getHeaders())->map(function ($value, $key) {
+            return ((int) $value[0] == $value[0])
+                ? (int) $value[0]
+                : $value[0];
+        })->toArray();
+    }
+
+    /**
+     * Get the paginator, if any.
+     *
+     * @param  mixed  $response
+     * @param  array  $json
+     * @param  string  $url
+     * @param  string  $method
+     * @param  string  $endpoint
+     * @return PaginatedResult|null
+     */
+    protected function paginator($response, array $json, string $url, string $method, string $endpoint)
+    {
+        $headers = $this->getHeaders($response);
+
+        if (! $maxResults = $headers['X-Max-Results'] ?? false) {
+            return;
+        }
+
+        $offset = $headers['X-Offset'] ?? 0;
+        $currentPageResults = $headers['X-Result'] ?? 0;
+
+        $paginator = new Paginator(
+            $this->from ? Arr::get($json, $this->from) : $json,
+            $maxResults,
+            $this->limit,
+            (int) floor($offset / $this->limit) + 1,
+            ['pageName' => 'page']
+        );
+
+        $paginator->setPath($url);
+
+        return new PaginatedResult($paginator, $method, $endpoint, $this);
     }
 }
