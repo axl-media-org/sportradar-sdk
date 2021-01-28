@@ -17,4 +17,15 @@ class Paginator extends BasePaginator
     {
         return $this->currentPage() <= 0;
     }
+
+    /**
+     * Determine if the content is parseable for
+     * another while loop.
+     *
+     * @return bool
+     */
+    public function parseable()
+    {
+        return ! $this->items->isEmpty();
+    }
 }

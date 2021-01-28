@@ -140,4 +140,39 @@ class ClientTest extends TestCase
 
         $this->assertCount(0, $summaries->getContent());
     }
+
+    public function test_pagination_for_parsing()
+    {
+        $page1Response = [
+            'summaries' => [
+                ['id' => 1],
+                ['id' => 2],
+            ],
+        ];
+
+        $page2Response = [
+            'summaries' => [
+                ['id' => 3],
+            ],
+        ];
+
+        $handlerStack = $this->generateMockHandler([
+            new Response(200, ['X-Max-Results' => 3, 'X-Offset' => 0, 'X-Result' => 2], json_encode($page1Response)),
+            new Response(200, ['X-Max-Results' => 3, 'X-Offset' => 2, 'X-Result' => 1], json_encode($page2Response)),
+            new Response(200, ['X-Max-Results' => 3, 'X-Offset' => 4, 'X-Result' => 0], json_encode([])),
+        ]);
+
+        $summaries = Sportradar::sport('soccer')
+            ->sportEvents()
+            ->handler($handlerStack)
+            ->from('summaries')
+            ->limit(2)
+            ->call('GET', '/some-endpoint');
+
+        while($summaries->parseable()) {
+            $summaries = $summaries->next();
+        }
+
+        $this->assertCount(3, $this->history);
+    }
 }
