@@ -30,15 +30,20 @@ $ php artisan vendor:publish --provider="AxlMedia\SportradarSdk\SportradarSdkSer
 ```php
 use AxlMedia\SportradarSdk\Facades\Facade as Sportradar;
 
-$response = Sportradar::sport('soccer')
+$summaries = Sportradar::sport('soccer')
     ->sportEvents()
+    ->from('summaries')
     ->getLiveSummaries();
 
-foreach ($response['summaries'] as $match) {
-    foreach ($match['sport_event']['competitors'] as $team) {
-        //
+while ($summaries->parseable()) {
+    foreach ($summaries->getContent() as $match) {
+        foreach ($match['sport_event']['competitors'] as $team) {
+            //
+        }
     }
-}
+
+    $summaries = $summaries->next();
+};
 ```
 
 ## 🐛 Testing
