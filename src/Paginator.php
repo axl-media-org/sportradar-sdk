@@ -3,8 +3,6 @@
 namespace AxlMedia\SportradarSdk;
 
 use Illuminate\Pagination\LengthAwarePaginator as BasePaginator;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 
 class Paginator extends BasePaginator
 {
