@@ -166,7 +166,7 @@ class ClientTest extends TestCase
             ->limit(2)
             ->call('GET', '/some-endpoint');
 
-        while($summaries->parseable()) {
+        while ($summaries->parseable()) {
             $summaries = $summaries->next();
         }
 
