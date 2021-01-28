@@ -424,13 +424,13 @@ abstract class Client
      * Get the paginator, if any.
      *
      * @param  mixed  $response
-     * @param  array  $json
+     * @param  array|null  $json
      * @param  string  $url
      * @param  string  $method
      * @param  string  $endpoint
      * @return PaginatedResult|null
      */
-    protected function paginator($response, array $json, string $url, string $method, string $endpoint)
+    protected function paginator($response, $json, string $url, string $method, string $endpoint)
     {
         $headers = $this->getHeaders($response);
 
@@ -442,7 +442,7 @@ abstract class Client
         $currentPageResults = $headers['X-Result'] ?? 0;
 
         $paginator = new Paginator(
-            $this->from ? Arr::get($json, $this->from) : $json,
+            $this->from ? Arr::get($json, $this->from) : ($json ?: []),
             $maxResults,
             $this->limit,
             (int) floor($offset / $this->limit) + 1,
