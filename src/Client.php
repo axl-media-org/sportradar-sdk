@@ -445,7 +445,7 @@ abstract class Client
             $this->from ? Arr::get($json, $this->from) : $json,
             $maxResults,
             $this->limit,
-            (int) floor($offset/$this->limit) + 1,
+            (int) floor($offset / $this->limit) + 1,
             ['pageName' => 'page']
         );
 
