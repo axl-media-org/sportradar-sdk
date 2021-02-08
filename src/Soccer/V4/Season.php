@@ -1,10 +1,10 @@
 <?php
 
-namespace AxlMedia\SportradarSdk\Soccer\ExtendedV4;
+namespace AxlMedia\SportradarSdk\Soccer\V4;
 
-use AxlMedia\SportradarSdk\SoccerExtendedV4;
+use AxlMedia\SportradarSdk\SoccerV4;
 
-class Season extends SoccerExtendedV4
+class Season extends SoccerV4
 {
     public function all()
     {

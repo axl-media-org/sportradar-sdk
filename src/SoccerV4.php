@@ -2,7 +2,7 @@
 
 namespace AxlMedia\SportradarSdk;
 
-class SoccerExtendedV4 extends Client
+class SoccerV4 extends Client
 {
     /**
      * Initialize the class.
@@ -12,57 +12,57 @@ class SoccerExtendedV4 extends Client
     public function __construct()
     {
         $this->placeholder(
-            '/soccer-extended/{access_level}/v4/{language_code}{endpoint}.{format}'
+            '/soccer/{access_level}/v4/{language_code}{endpoint}.{format}'
         );
     }
 
     /**
      * Create a new Competition instance.
      *
-     * @return \AxlMedia\SportradarSdk\Soccer\ExtendedV4\Competition
+     * @return \AxlMedia\SportradarSdk\Soccer\V4\Competition
      */
     public function competitions()
     {
-        return new Soccer\ExtendedV4\Competition;
+        return new Soccer\V4\Competition;
     }
 
     /**
      * Create a new Competitor instance.
      *
-     * @return \AxlMedia\SportradarSdk\Soccer\ExtendedV4\Competitor
+     * @return \AxlMedia\SportradarSdk\Soccer\V4\Competitor
      */
     public function competitors()
     {
-        return new Soccer\ExtendedV4\Competitor;
+        return new Soccer\V4\Competitor;
     }
 
     /**
      * Create a new Player instance.
      *
-     * @return \AxlMedia\SportradarSdk\Soccer\ExtendedV4\Player
+     * @return \AxlMedia\SportradarSdk\Soccer\V4\Player
      */
     public static function players()
     {
-        return new Soccer\ExtendedV4\Player;
+        return new Soccer\V4\Player;
     }
 
     /**
      * Create a new Season instance.
      *
-     * @return \AxlMedia\SportradarSdk\Soccer\ExtendedV4\Season
+     * @return \AxlMedia\SportradarSdk\Soccer\V4\Season
      */
     public function seasons()
     {
-        return new Soccer\ExtendedV4\Season;
+        return new Soccer\V4\Season;
     }
 
     /**
      * Create a new SportEvent instance.
      *
-     * @return \AxlMedia\SportradarSdk\Soccer\ExtendedV4\SportEvent
+     * @return \AxlMedia\SportradarSdk\Soccer\V4\SportEvent
      */
     public static function sportEvents()
     {
-        return new Soccer\ExtendedV4\SportEvent;
+        return new Soccer\V4\SportEvent;
     }
 }

@@ -8,7 +8,7 @@ return [
 
             'enabled' => true,
 
-            'client' => \AxlMedia\SportradarSdk\SoccerExtendedV4::class,
+            'client' => \AxlMedia\SportradarSdk\SoccerV4::class,
 
             'keys' => [
                 'production' => env('SPORTRADAR_SOCCER_PRODUCTION_KEY', 'some-key'),

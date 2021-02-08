@@ -1,12 +1,12 @@
 <?php
 
-namespace AxlMedia\SportradarSdk\Soccer\ExtendedV4;
+namespace AxlMedia\SportradarSdk\Soccer\V4;
 
-use AxlMedia\SportradarSdk\SoccerExtendedV4;
+use AxlMedia\SportradarSdk\SoccerV4;
 use Carbon\Carbon;
 use DateTime;
 
-class SportEvent extends SoccerExtendedV4
+class SportEvent extends SoccerV4
 {
     public function getFunFacts(string $id)
     {
