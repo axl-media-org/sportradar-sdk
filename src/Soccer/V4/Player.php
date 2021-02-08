@@ -15,14 +15,4 @@ class Player extends SoccerV4
     {
         return $this->call('GET', "/players/{$id}/summaries");
     }
-
-    public function getSeasonStatistics(string $seasonId, string $id)
-    {
-        return $this->call('GET', "/seasons/{$seasonId}/competitors/{$id}/statistics");
-    }
-
-    public function getVersus(string $id, string $id2)
-    {
-        return $this->call('GET', "/competitors/{$id}/versus/{$id2}");
-    }
 }
