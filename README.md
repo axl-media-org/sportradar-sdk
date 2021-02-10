@@ -54,7 +54,7 @@ while ($summaries->parseable()) {
 use AxlMedia\SportradarSdk\SoccerV4;
 
 // The key is the access_level and the value is the actual API key.
-SoccerV4::setKeys([
+SoccerV4::keys([
     'production' => 'some-key',
     'trial' => 'some-key',
 ]);
